@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">KaraokeDemo</string>
 
+    <!-- General -->
+    <string name="lbl_like">Like</string>
+
+    <!-- Main Menu -->
+    <string name="lbl_home">Home</string>
+    <string name="lbl_play">Play</string>
+    <string name="lbl_sing">Sing</string>
+    <string name="lbl_notifications">Notifications</string>
+    <string name="lbl_profile">Profile</string>
+
+    <!-- Home -->
     <string name="lbl_edit_profile">Edit profile</string>
     <string name="num_zero">0</string>
     <string name="lbl_followers">Followers</string>

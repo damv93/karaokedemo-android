@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_item_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/lbl_home" />
+
+    <item
+        android:id="@+id/menu_item_play"
+        android:icon="@drawable/ic_play_circle_outline"
+        android:title="@string/lbl_play" />
+
+    <item
+        android:id="@+id/menu_item_sing"
+        android:icon="@drawable/ic_music_note"
+        android:title="@string/lbl_sing" />
+
+    <item
+        android:id="@+id/menu_item_notifications"
+        android:icon="@drawable/ic_notifications"
+        android:title="@string/lbl_notifications" />
+
+    <item
+        android:id="@+id/menu_item_profile"
+        android:icon="@drawable/ic_person"
+        android:title="@string/lbl_profile" />
+
+</menu>
