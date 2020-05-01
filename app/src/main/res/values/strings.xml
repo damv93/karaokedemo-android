@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">KaraokeDemo</string>
+
+    <string name="lbl_edit_profile">Edit profile</string>
+    <string name="num_zero">0</string>
+    <string name="lbl_followers">Followers</string>
+    <string name="lbl_followed">Followed</string>
+    <string name="lbl_views">Views</string>
+    
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
