@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".presentation.view.activity.ProfileActivity"
+            android:parentActivityName=".presentation.view.activity.HomeActivity"/>
+        <activity
             android:name=".presentation.view.activity.HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">

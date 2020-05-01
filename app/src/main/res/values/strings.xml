@@ -3,6 +3,10 @@
 
     <!-- General -->
     <string name="lbl_like">Like</string>
+    <string name="lbl_name">Name</string>
+    <string name="lbl_username">Username</string>
+    <string name="lbl_biography">Biography</string>
+    <string name="lbl_save">Save</string>
 
     <!-- Main Menu -->
     <string name="lbl_home">Home</string>
@@ -21,7 +25,10 @@
     <!-- Item Video -->
     <string name="txt_user_sang">%s sang %s</string>
     <string name="txt_zero_reproductions">0 reproductions</string>
-    
+
+    <!-- Profile -->
+    <string name="lbl_change_photo">Change Photo</string>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

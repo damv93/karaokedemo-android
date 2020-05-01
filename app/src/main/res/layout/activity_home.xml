@@ -29,7 +29,8 @@
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-                <include layout="@layout/header_profile" />
+                <include android:id="@+id/header_profile"
+                    layout="@layout/header_profile" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
