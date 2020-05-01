@@ -17,6 +17,10 @@
     <string name="lbl_followers">Followers</string>
     <string name="lbl_followed">Followed</string>
     <string name="lbl_views">Views</string>
+
+    <!-- Item Video -->
+    <string name="txt_user_sang">%s sang %s</string>
+    <string name="txt_zero_reproductions">0 reproductions</string>
     
     <string name="large_text">
         "Material is the metaphor.\n\n"

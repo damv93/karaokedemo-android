@@ -5,15 +5,31 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.example.karaokedemo.R
-import kotlinx.android.synthetic.main.activity_home.*
+import com.example.karaokedemo.databinding.ActivityHomeBinding
+import com.example.karaokedemo.presentation.view.VideoAdapter
+import com.example.karaokedemo.presentation.viewmodel.HomeViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
 
+    private val viewModel: HomeViewModel by viewModel()
+    private lateinit var binding: ActivityHomeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-        setSupportActionBar(toolbar)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
+        setSupportActionBar(binding.toolbar)
+
+        val videoAdapter = VideoAdapter()
+        binding.rvVideos.adapter = videoAdapter
+        viewModel.videos.observe(this, Observer {
+            it?.let {
+                videoAdapter.videos = it
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

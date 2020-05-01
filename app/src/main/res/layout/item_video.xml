@@ -1,111 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/space_medium"
-    android:layout_marginEnd="@dimen/space_medium"
-    android:layout_marginTop="@dimen/space_medium"
-    android:background="@drawable/background_item">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/img_profile"
-        android:layout_width="@dimen/mini_profile_image_size"
-        android:layout_height="@dimen/mini_profile_image_size"
-        app:srcCompat="@drawable/ic_person"
-        android:layout_marginTop="@dimen/space_medium"
-        android:layout_marginStart="@dimen/space_medium"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space_medium"
-        app:layout_constraintStart_toEndOf="@id/img_profile"
-        app:layout_constraintTop_toTopOf="@+id/img_profile"
-        app:layout_constraintBottom_toBottomOf="@+id/img_profile"
-        tools:text="Username sang Secreto" />
-
-    <VideoView
-        android:id="@+id/video"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_height="@dimen/video_height"
-        android:layout_marginTop="@dimen/space_small"
-        app:layout_constraintTop_toBottomOf="@id/img_profile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space_small"
-        android:layout_marginTop="@dimen/space_small"
-        app:srcCompat="@drawable/ic_videocam"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/video" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/space_small"
-        android:layout_marginTop="@dimen/space_small"
-        app:srcCompat="@drawable/ic_more_vert"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/video" />
-
-    <!--ImageView
-        android:id="@+id/img_play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/space_small"
-        android:layout_marginTop="@dimen/space_small"
-        app:srcCompat="@drawable/ic_play_circle_outline"
-        app:layout_constraintStart_toStartOf="@id/img_preview"
-        app:layout_constraintEnd_toEndOf="@id/img_preview"
-        app:layout_constraintTop_toTopOf="@id/img_preview"
-        app:layout_constraintBottom_toBottomOf="@id/img_preview"/-->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_medium"
-        android:layout_marginBottom="@dimen/space_medium"
-        tools:text="Secreto - Anuel AA, Karol G"
-        app:layout_constraintStart_toStartOf="@id/video"
-        app:layout_constraintBottom_toBottomOf="@id/video" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/space_medium"
-        android:layout_marginBottom="@dimen/space_medium"
-        tools:text="0 reproductions"
-        app:layout_constraintEnd_toEndOf="@id/video"
-        app:layout_constraintBottom_toBottomOf="@id/video" />
-
-    <ImageView
-        android:id="@+id/img_like"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space_medium"
         android:layout_marginTop="@dimen/space_medium"
-        android:layout_marginBottom="@dimen/space_medium"
-        app:srcCompat="@drawable/ic_favorite_border"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/video"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:background="@drawable/background_item">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space_small"
-        app:layout_constraintStart_toEndOf="@id/img_like"
-        app:layout_constraintTop_toTopOf="@+id/img_like"
-        app:layout_constraintBottom_toBottomOf="@+id/img_like"
-        android:text="@string/lbl_like" />
+        <ImageView
+            android:id="@+id/img_profile"
+            android:layout_width="@dimen/mini_profile_image_size"
+            android:layout_height="@dimen/mini_profile_image_size"
+            app:srcCompat="@drawable/ic_person"
+            android:layout_marginTop="@dimen/space_medium"
+            android:layout_marginStart="@dimen/space_medium"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/txt_user_sang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_medium"
+            app:layout_constraintStart_toEndOf="@id/img_profile"
+            app:layout_constraintTop_toTopOf="@+id/img_profile"
+            app:layout_constraintBottom_toBottomOf="@+id/img_profile"
+            tools:text="Username sang Secreto" />
+
+        <VideoView
+            android:id="@+id/video"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/video_height"
+            tools:layout_height="@dimen/video_height"
+            android:layout_marginTop="@dimen/space_small"
+            app:layout_constraintTop_toBottomOf="@id/img_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_small"
+            android:layout_marginTop="@dimen/space_small"
+            app:srcCompat="@drawable/ic_videocam"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/video" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_small"
+            android:layout_marginTop="@dimen/space_small"
+            app:srcCompat="@drawable/ic_more_vert"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/video" />
+
+        <!--ImageView
+            android:id="@+id/img_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_small"
+            android:layout_marginTop="@dimen/space_small"
+            app:srcCompat="@drawable/ic_play_circle_outline"
+            app:layout_constraintStart_toStartOf="@id/img_preview"
+            app:layout_constraintEnd_toEndOf="@id/img_preview"
+            app:layout_constraintTop_toTopOf="@id/img_preview"
+            app:layout_constraintBottom_toBottomOf="@id/img_preview"/-->
+
+        <TextView
+            android:id="@+id/txt_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_medium"
+            android:layout_marginBottom="@dimen/space_medium"
+            tools:text="Secreto - Anuel AA, Karol G"
+            app:layout_constraintStart_toStartOf="@id/video"
+            app:layout_constraintBottom_toBottomOf="@id/video" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_medium"
+            android:layout_marginBottom="@dimen/space_medium"
+            android:text="@string/txt_zero_reproductions"
+            app:layout_constraintEnd_toEndOf="@id/video"
+            app:layout_constraintBottom_toBottomOf="@id/video" />
+
+        <ImageView
+            android:id="@+id/img_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_medium"
+            android:layout_marginTop="@dimen/space_medium"
+            android:layout_marginBottom="@dimen/space_medium"
+            app:srcCompat="@drawable/ic_favorite_border"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/video"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_small"
+            app:layout_constraintStart_toEndOf="@id/img_like"
+            app:layout_constraintTop_toTopOf="@+id/img_like"
+            app:layout_constraintBottom_toBottomOf="@+id/img_like"
+            android:text="@string/lbl_like" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
