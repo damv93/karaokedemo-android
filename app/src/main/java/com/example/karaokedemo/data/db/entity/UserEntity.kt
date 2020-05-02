@@ -7,19 +7,19 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "user")
 data class UserEntity(
     @PrimaryKey(autoGenerate = true)
-    var id: Long,
+    var id: Long = 0,
     @ColumnInfo(name = "name")
     var name: String,
     @ColumnInfo(name = "username")
     var username: String,
     @ColumnInfo(name = "biography")
-    var biography: String,
+    var biography: String? = null,
     @ColumnInfo(name = "followers")
-    var followers: Int,
+    var followers: Int = 0,
     @ColumnInfo(name = "followed")
-    var followed: Int,
+    var followed: Int = 0,
     @ColumnInfo(name = "views")
-    var views: Int,
+    var views: Int = 0,
     @ColumnInfo(name = "profile_picture_uri")
-    var profilePictureUri: String
+    var profilePictureUri: String? = null
 )

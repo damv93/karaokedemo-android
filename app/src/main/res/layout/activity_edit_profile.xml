@@ -3,12 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.karaokedemo.presentation.viewmodel.EditProfileViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="@dimen/space_medium"
         android:paddingEnd="@dimen/space_medium"
-        tools:context=".presentation.view.activity.ProfileActivity">
+        tools:context=".presentation.view.activity.EditProfileActivity">
 
         <ImageButton
             android:id="@+id/img_profile"
@@ -37,11 +43,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_large"
             android:hint="@string/lbl_name"
+            app:error="@{viewModel.showErrors ? viewModel.nameError : null}"
             app:layout_constraintTop_toBottomOf="@id/txt_change_photo">
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.name}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,11 +59,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_small"
             android:hint="@string/lbl_username"
+            app:error="@{viewModel.showErrors ? viewModel.usernameError : null}"
             app:layout_constraintTop_toBottomOf="@id/til_name">
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.username}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,7 +79,8 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.biography}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

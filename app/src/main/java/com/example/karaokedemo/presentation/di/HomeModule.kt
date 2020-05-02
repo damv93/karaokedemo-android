@@ -7,5 +7,5 @@ import org.koin.dsl.module
 
 val homeModule = module {
     single { VideoRepository() }
-    viewModel { HomeViewModel(get()) }
+    viewModel { HomeViewModel(get(), get()) }
 }

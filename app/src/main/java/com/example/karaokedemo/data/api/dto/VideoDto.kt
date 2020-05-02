@@ -10,5 +10,5 @@ data class VideoDto(
     @SerializedName("preview_img")
     val previewImageUrl: String,
     @SerializedName("profile")
-    val user: UserProfileDto
+    val user: UserDto
 )

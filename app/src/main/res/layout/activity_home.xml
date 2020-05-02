@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.karaokedemo.presentation.viewmodel.HomeViewModel" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,6 +36,7 @@
                     app:popupTheme="@style/AppTheme.PopupOverlay" />
 
                 <include android:id="@+id/header_profile"
+                    app:user="@{viewModel.user}"
                     layout="@layout/header_profile" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>

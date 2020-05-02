@@ -1,8 +1,8 @@
 package com.example.karaokedemo.presentation.view.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -12,6 +12,7 @@ import com.example.karaokedemo.R
 import com.example.karaokedemo.databinding.ActivityHomeBinding
 import com.example.karaokedemo.presentation.view.VideoAdapter
 import com.example.karaokedemo.presentation.viewmodel.HomeViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.header_profile.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -29,7 +30,10 @@ class HomeActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         setSupportActionBar(binding.toolbar)
 
-        binding.headerProfile.btn_edit_profile.setOnClickListener {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
+        binding.headerProfile.btnEditProfile.setOnClickListener {
             onEditProfile()
         }
 
@@ -40,6 +44,22 @@ class HomeActivity : AppCompatActivity() {
                 videoAdapter.videos = it
             }
         })
+    }
+
+    private fun onEditProfile() {
+        val intent = Intent(this, EditProfileActivity::class.java)
+        startActivityForResult(intent, EDIT_PROFILE_REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            EDIT_PROFILE_REQUEST_CODE -> {
+                if (resultCode == Activity.RESULT_OK)
+                    Snackbar.make(binding.root, R.string.msg_profile_updated, Snackbar.LENGTH_LONG)
+                        .show()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -57,10 +77,5 @@ class HomeActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun onEditProfile() {
-        val intent = Intent(this, ProfileActivity::class.java)
-        startActivityForResult(intent, EDIT_PROFILE_REQUEST_CODE)
     }
 }

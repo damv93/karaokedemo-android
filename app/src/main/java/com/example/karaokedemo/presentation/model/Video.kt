@@ -4,5 +4,5 @@ data class Video(
     val description: String,
     val url: String,
     val previewImageUrl: String,
-    val user: UserProfile
+    val user: User
 )

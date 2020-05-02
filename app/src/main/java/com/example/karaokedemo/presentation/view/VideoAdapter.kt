@@ -33,7 +33,7 @@ class VideoViewHolder private constructor(private val binding: ItemVideoBinding)
 
     fun bind(item: Video) {
         binding.apply {
-            Picasso.get().load(item.user.imageUrl)
+            Picasso.get().load(item.user.imageUri)
                 .placeholder(R.drawable.ic_person)
                 .error(R.drawable.ic_person)
                 .into(imgProfile)
