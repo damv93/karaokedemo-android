@@ -25,5 +25,6 @@ fun User.toEntity(): UserEntity =
         id = id,
         name = name,
         username = username,
-        biography = biography
+        biography = biography,
+        profilePictureUri = imageUri
     )

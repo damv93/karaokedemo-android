@@ -26,6 +26,7 @@ class EditProfileViewModel(private val context: Context, private val userReposit
     val name = MutableLiveData<String>()
     val username = MutableLiveData<String>()
     val biography = MutableLiveData<String>()
+    var profileImageUri = MutableLiveData<String>()
 
     private val _showErrors = MutableLiveData<Boolean>()
     val showErrors: LiveData<Boolean>
@@ -50,6 +51,7 @@ class EditProfileViewModel(private val context: Context, private val userReposit
             name.value = user?.name
             username.value = user?.username
             biography.value = user?.biography
+            profileImageUri.value = user?.imageUri
         }
     }
 
@@ -62,7 +64,8 @@ class EditProfileViewModel(private val context: Context, private val userReposit
             id = userId,
             name = name.value!!,
             username = username.value!!,
-            biography = biography.value
+            biography = biography.value,
+            imageUri = profileImageUri.value
         )
         uiScope.launch {
             userRepository.saveUser(user.toEntity())

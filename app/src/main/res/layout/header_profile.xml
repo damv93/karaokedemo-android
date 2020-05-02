@@ -22,6 +22,7 @@
             android:layout_height="@dimen/profile_image_size"
             android:layout_marginTop="@dimen/space_medium"
             app:srcCompat="@drawable/ic_person"
+            app:imageUri="@{user.imageUri}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

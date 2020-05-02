@@ -10,10 +10,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.karaokedemo.R
 import com.example.karaokedemo.databinding.ActivityHomeBinding
-import com.example.karaokedemo.presentation.view.VideoAdapter
+import com.example.karaokedemo.presentation.view.adapter.VideoAdapter
 import com.example.karaokedemo.presentation.viewmodel.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.header_profile.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {

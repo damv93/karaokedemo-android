@@ -1,4 +1,4 @@
-package com.example.karaokedemo.presentation.view
+package com.example.karaokedemo.presentation.view.adapter
 
 import android.net.Uri
 import android.view.LayoutInflater
@@ -18,7 +18,9 @@ class VideoAdapter : RecyclerView.Adapter<VideoViewHolder>() {
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
-        return VideoViewHolder.from(parent)
+        return VideoViewHolder.from(
+            parent
+        )
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
@@ -48,7 +50,9 @@ class VideoViewHolder private constructor(private val binding: ItemVideoBinding)
         fun from(parent: ViewGroup): VideoViewHolder {
             val inflater = LayoutInflater.from(parent.context)
             val binding = ItemVideoBinding.inflate(inflater, parent, false)
-            return VideoViewHolder(binding)
+            return VideoViewHolder(
+                binding
+            )
         }
     }
 

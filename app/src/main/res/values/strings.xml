@@ -7,6 +7,9 @@
     <string name="lbl_username">Username</string>
     <string name="lbl_biography">Biography</string>
     <string name="lbl_save">Save</string>
+    <string name="lbl_camera">Camera</string>
+    <string name="lbl_gallery">Gallery</string>
+    <string name="lbl_profile_picture">Profile picture</string>
 
     <!-- Main Menu -->
     <string name="lbl_home">Home</string>
