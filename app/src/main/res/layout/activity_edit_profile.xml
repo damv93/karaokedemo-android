@@ -23,6 +23,7 @@
             android:layout_marginTop="@dimen/space_medium"
             app:srcCompat="@drawable/ic_person"
             app:imageUri="@{viewModel.profileImageUri}"
+            app:placeholder="@{@drawable/ic_person}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
