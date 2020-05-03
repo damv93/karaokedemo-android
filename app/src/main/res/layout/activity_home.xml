@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="viewModel"
             type="com.example.karaokedemo.presentation.viewmodel.HomeViewModel" />
@@ -15,6 +16,7 @@
         tools:context=".presentation.view.activity.HomeActivity">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinator"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/nav_bottom">
@@ -59,6 +61,14 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="vertical"
                 tools:listitem="@layout/item_video"/>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                app:layout_anchor="@id/rv_videos"
+                app:layout_anchorGravity="center_horizontal"
+                android:visibility="@{viewModel.isLoadingVideos ? View.VISIBLE : View.GONE}"/>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
