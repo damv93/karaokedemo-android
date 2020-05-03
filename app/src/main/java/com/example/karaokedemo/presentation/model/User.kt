@@ -6,4 +6,7 @@ data class User(
     val username: String,
     val biography: String? = null,
     val imageUri: String? = null
-)
+) {
+    val fullUsername: String
+        get() = "@$username"
+}

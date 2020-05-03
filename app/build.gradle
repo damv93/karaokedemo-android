@@ -58,6 +58,9 @@ dependencies {
     // Picasso
     implementation "com.squareup.picasso:picasso:$version_picasso"
 
+    // Picasso transformations
+    implementation "jp.wasabeef:picasso-transformations:$version_picasso_tranformations"
+
     // Room
     implementation "androidx.room:room-runtime:$version_room"
     kapt "androidx.room:room-compiler:$version_room"

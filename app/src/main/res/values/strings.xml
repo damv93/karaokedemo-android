@@ -27,6 +27,7 @@
     <string name="msg_profile_updated">Your profile has been updated</string>
     <string name="txt_guest_username">\@guest</string>
     <string name="txt_guest_name">Guest</string>
+    <string name="txt_username">\@%s</string>
 
     <!-- Item Video -->
     <string name="txt_user_sang">%s sang %s</string>

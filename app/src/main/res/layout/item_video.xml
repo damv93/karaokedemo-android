@@ -22,8 +22,8 @@
 
         <ImageView
             android:id="@+id/img_profile"
-            android:layout_width="@dimen/mini_profile_image_size"
-            android:layout_height="@dimen/mini_profile_image_size"
+            android:layout_width="@dimen/icon_size_large"
+            android:layout_height="@dimen/icon_size_large"
             android:layout_marginTop="@dimen/space_medium"
             android:layout_marginStart="@dimen/space_medium"
             app:srcCompat="@drawable/ic_person"

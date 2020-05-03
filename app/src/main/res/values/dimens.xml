@@ -4,11 +4,18 @@
     <dimen name="space_large">24dp</dimen>
     <dimen name="space_xl">48dp</dimen>
     <dimen name="space_xxl">72dp</dimen>
+    <dimen name="icon_size_small">16dp</dimen>
+    <dimen name="icon_size_medium">24dp</dimen>
+    <dimen name="icon_size_large">48dp</dimen>
+    <dimen name="icon_size_xl">96dp</dimen>
+    <dimen name="icon_size_xxl">108dp</dimen>
     <dimen name="app_bar_height">360dp</dimen>
+    <dimen name="app_bar_title_margin">132dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
-    <dimen name="profile_image_size">96dp</dimen>
-    <dimen name="mini_profile_image_size">48dp</dimen>
     <dimen name="video_height">300dp</dimen>
     <dimen name="border_radius_medium">24dp</dimen>
+    <dimen name="button_height_small">30dp</dimen>
+
+    <dimen name="text_small">12sp</dimen>
 </resources>

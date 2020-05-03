@@ -14,16 +14,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_collapseMode="parallax">
 
         <ImageView
             android:id="@+id/img_profile"
-            android:layout_width="@dimen/profile_image_size"
-            android:layout_height="@dimen/profile_image_size"
+            android:layout_width="@dimen/icon_size_xxl"
+            android:layout_height="@dimen/icon_size_xxl"
             android:layout_marginTop="@dimen/space_medium"
-            app:srcCompat="@drawable/ic_person"
+            app:srcCompat="@drawable/ic_person_with_background"
             app:imageUri="@{user.imageUri}"
-            app:placeholder="@{@drawable/ic_person}"
+            app:placeholder="@{@drawable/ic_person_with_background}"
+            android:background="@drawable/background_double_ring"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -32,11 +34,11 @@
             android:id="@+id/txt_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_small"
+            android:layout_marginTop="48dp"
             app:layout_constraintTop_toBottomOf="@+id/img_profile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@{user.username.length > 0 ? user.username : @string/txt_guest_username}"
+            android:text="@{user.fullUsername.length > 0 ? user.fullUsername : @string/txt_guest_username}"
             tools:text="@string/lbl_username"/>
 
         <TextView
@@ -56,12 +58,13 @@
         <Button
             android:id="@+id/btn_edit_profile"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/button_height_small"
             android:layout_marginTop="@dimen/space_small"
+            android:text="@string/lbl_edit_profile"
+            style="@style/AppTheme.WhiteButton.Small"
             app:layout_constraintTop_toBottomOf="@id/txt_biography"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/lbl_edit_profile" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -69,7 +72,9 @@
             android:orientation="horizontal"
             android:layout_marginStart="@dimen/space_large"
             android:layout_marginEnd="@dimen/space_large"
-            android:layout_marginBottom="@dimen/space_xxl"
+            android:layout_marginBottom="@dimen/space_medium"
+            android:padding="@dimen/space_small"
+            android:background="@drawable/background_box"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -84,6 +89,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:text="@string/num_zero" />
 
                 <TextView
@@ -104,6 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:textStyle="bold"
                     android:text="@string/num_zero" />
 
                 <TextView
@@ -124,6 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:textStyle="bold"
                     android:text="@string/num_zero" />
 
                 <TextView
