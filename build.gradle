@@ -10,6 +10,7 @@ buildscript {
         version_koin = "2.1.5"
         version_picasso = "2.71828"
         version_room = "2.2.5"
+        version_exoplayer = "2.8.4"
     }
     repositories {
         google()

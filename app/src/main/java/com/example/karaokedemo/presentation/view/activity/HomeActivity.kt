@@ -3,14 +3,14 @@ package com.example.karaokedemo.presentation.view.activity
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.karaokedemo.R
 import com.example.karaokedemo.databinding.ActivityHomeBinding
-import com.example.karaokedemo.presentation.view.adapter.VideoAdapter
+import com.example.karaokedemo.presentation.view.adapter.VideoPlayerRecyclerAdapter
 import com.example.karaokedemo.presentation.viewmodel.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -36,11 +36,10 @@ class HomeActivity : AppCompatActivity() {
             onEditProfile()
         }
 
-        val videoAdapter = VideoAdapter()
-        binding.rvVideos.adapter = videoAdapter
         viewModel.videos.observe(this, Observer {
             it?.let {
-                videoAdapter.videos = it
+                binding.rvVideos.setMediaObjects(ArrayList(it))
+                binding.rvVideos.adapter = VideoPlayerRecyclerAdapter(ArrayList(it))
             }
         })
     }
@@ -76,5 +75,20 @@ class HomeActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.rvVideos.resumePlayer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.rvVideos.pausePlayer()
+    }
+
+    override fun onDestroy() {
+        binding.rvVideos.releasePlayer()
+        super.onDestroy()
     }
 }

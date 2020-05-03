@@ -42,12 +42,13 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.example.karaokedemo.presentation.view.component.VideoPlayerRecyclerView
             android:id="@+id/rv_videos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
             tools:listitem="@layout/item_video"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

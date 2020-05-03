@@ -42,7 +42,7 @@ class VideoViewHolder private constructor(private val binding: ItemVideoBinding)
             txtUserSang.text =
                 itemView.context.getString(R.string.txt_user_sang, item.user.name, item.description)
             txtDescription.text = item.description
-            video.setVideoURI(Uri.parse(item.url))
+            //video.setVideoURI(Uri.parse(item.url))
         }
     }
 
