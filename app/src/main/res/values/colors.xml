@@ -6,4 +6,5 @@
     <color name="colorPrimaryLight2">#D0b3FA</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorItemDarkBackground">#FF424242</color>
+    <color name="windowBackground">#282828</color>
 </resources>

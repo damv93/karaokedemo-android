@@ -9,69 +9,69 @@
             type="com.example.karaokedemo.presentation.viewmodel.HomeViewModel" />
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.view.activity.HomeActivity">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/app_bar_height"
-            android:elevation="0dp"
-            android:theme="@style/AppTheme.AppBarOverlay">
-
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/toolbar_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:contentScrim="?attr/colorPrimaryDark"
-                app:title="@{viewModel.user.name}"
-                app:expandedTitleGravity="top|center_horizontal"
-                app:expandedTitleMarginTop="@dimen/app_bar_title_margin"
-                app:toolbarId="@+id/toolbar">
-
-                <include android:id="@+id/header_profile"
-                    app:user="@{viewModel.user}"
-                    layout="@layout/header_profile" />
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:layout_collapseMode="pin"
-                    app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <com.example.karaokedemo.presentation.view.component.VideoPlayerRecyclerView
-            android:id="@+id/rv_videos"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            tools:listitem="@layout/item_video"/>
+            android:layout_above="@id/nav_bottom">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_bar_height"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/toolbar_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    app:contentScrim="@color/windowBackground"
+                    app:title="@{viewModel.user.name}"
+                    app:expandedTitleGravity="top|center_horizontal"
+                    app:expandedTitleMarginTop="@dimen/app_bar_title_margin"
+                    app:toolbarId="@+id/toolbar">
+
+                    <include android:id="@+id/header_profile"
+                        app:user="@{viewModel.user}"
+                        layout="@layout/header_profile" />
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin"
+                        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <com.example.karaokedemo.presentation.view.component.VideoPlayerRecyclerView
+                android:id="@+id/rv_videos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                tools:listitem="@layout/item_video"/>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            android:layout_alignParentBottom="true"
             app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/menu_main"/>
+            app:menu="@menu/menu_main"
+            app:itemIconTint="@color/nav_item_icon_color_list"
+            android:background="@color/windowBackground"/>
 
-        <!--com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
-            app:layout_anchor="@id/app_bar"
-            app:layout_anchorGravity="bottom|end"
-            app:srcCompat="@android:drawable/ic_dialog_email" /-->
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </RelativeLayout>
 
 </layout>

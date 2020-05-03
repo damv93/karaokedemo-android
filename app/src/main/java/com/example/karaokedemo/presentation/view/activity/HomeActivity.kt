@@ -36,6 +36,8 @@ class HomeActivity : AppCompatActivity() {
             onEditProfile()
         }
 
+        binding.navBottom.selectedItemId = R.id.menu_item_profile
+
         viewModel.videos.observe(this, Observer {
             it?.let {
                 binding.rvVideos.setMediaObjects(it)
