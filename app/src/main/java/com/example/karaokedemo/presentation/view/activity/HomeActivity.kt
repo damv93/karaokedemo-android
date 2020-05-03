@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.karaokedemo.R
 import com.example.karaokedemo.databinding.ActivityHomeBinding
-import com.example.karaokedemo.presentation.view.adapter.VideoPlayerRecyclerAdapter
+import com.example.karaokedemo.presentation.view.adapter.VideoPlayerAdapter
 import com.example.karaokedemo.presentation.viewmodel.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,8 +38,8 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel.videos.observe(this, Observer {
             it?.let {
-                binding.rvVideos.setMediaObjects(ArrayList(it))
-                binding.rvVideos.adapter = VideoPlayerRecyclerAdapter(ArrayList(it))
+                binding.rvVideos.setMediaObjects(it)
+                binding.rvVideos.adapter = VideoPlayerAdapter(it)
             }
         })
     }

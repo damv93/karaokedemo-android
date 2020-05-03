@@ -9,6 +9,6 @@ import com.squareup.picasso.Picasso
 fun setImageUri(imageView: ImageView, uri: String?) {
     Picasso.get()
         .load(uri)
-        .placeholder(R.drawable.ic_person)
+        .placeholder(R.drawable.anim_loading)
         .into(imageView)
 }
