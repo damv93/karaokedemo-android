@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
@@ -15,22 +14,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.karaokedemo.R
 import com.example.karaokedemo.databinding.ActivityEditProfileBinding
-import com.example.karaokedemo.presentation.view.util.withError
+import com.example.karaokedemo.presentation.util.FileUtil
+import com.example.karaokedemo.presentation.view.util.SnackbarUtil
 import com.example.karaokedemo.presentation.viewmodel.EditProfileViewModel
-import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
-import java.io.IOException
-import java.nio.channels.FileChannel
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class EditProfileActivity : AppCompatActivity() {
@@ -83,34 +74,14 @@ class EditProfileActivity : AppCompatActivity() {
     private fun takePhoto() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePhotoIntent ->
             takePhotoIntent.resolveActivity(packageManager)?.also {
-                val photoFile: File? = try {
-                    createImageFile()
-                } catch (ex: IOException) {
-                    null
-                }
-                photoFile?.also {
-                    val photoURI: Uri = FileProvider.getUriForFile(
-                        this,
-                        "com.example.karaokedemo.fileprovider",
-                        it
-                    )
-                    currentPhotoUri = photoURI.toString()
-                    takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                val photoFileUri: Uri? = FileUtil.createFileUri(this)
+                photoFileUri?.also {
+                    currentPhotoUri = it.toString()
+                    takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, it)
                     startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO)
                 }
             }
         }
-    }
-
-    @Throws(IOException::class)
-    private fun createImageFile(): File {
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile(
-            "JPEG_${timeStamp}_", /* prefix */
-            ".jpg", /* suffix */
-            storageDir /* directory */
-        )
     }
 
     private fun checkCanPickImage() {
@@ -167,7 +138,7 @@ class EditProfileActivity : AppCompatActivity() {
         val cursor: Cursor? =
             contentResolver.query(selectedImageUri, filePathColumn, null, null, null)
         cursor ?: run {
-            showErrorMessage(getString(R.string.msg_general_error))
+            SnackbarUtil.showError(binding.root, getString(R.string.msg_general_error))
             return
         }
 
@@ -178,31 +149,9 @@ class EditProfileActivity : AppCompatActivity() {
 
         cursor.close()
 
-        var source: FileChannel? = null
-        var destination: FileChannel? = null
-        try {
-            val newFile = createImageFile()
-            source = FileInputStream(imagePath).channel
-            destination = FileOutputStream(newFile).channel
-            destination.transferFrom(source, 0, source.size())
-            val imageUri: Uri = FileProvider.getUriForFile(
-                this,
-                "com.example.karaokedemo.fileprovider",
-                newFile
-            )
-            viewModel.profileImageUri.value = imageUri.toString()
-        } catch (e: IOException){
-            showErrorMessage(getString(R.string.msg_general_error))
-        } finally {
-            source?.close()
-            destination?.close()
-        }
-    }
-
-    private fun showErrorMessage(message: String) {
-        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG)
-            .withError()
-            .show()
+        val newImageFileUri: Uri? = FileUtil.copyToNewFile(this, imagePath)
+        newImageFileUri?.let { viewModel.profileImageUri.value = it.toString() }
+            ?: SnackbarUtil.showError(binding.root, getString(R.string.msg_general_error))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -11,10 +11,8 @@ import androidx.lifecycle.Observer
 import com.example.karaokedemo.R
 import com.example.karaokedemo.databinding.ActivityHomeBinding
 import com.example.karaokedemo.presentation.view.adapter.VideoPlayerAdapter
-import com.example.karaokedemo.presentation.view.util.withError
-import com.example.karaokedemo.presentation.view.util.withInfo
+import com.example.karaokedemo.presentation.view.util.SnackbarUtil
 import com.example.karaokedemo.presentation.viewmodel.HomeViewModel
-import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -48,7 +46,7 @@ class HomeActivity : AppCompatActivity() {
         })
 
         viewModel.showError.observe(this, Observer {
-            showErrorMessage(it)
+            SnackbarUtil.showError(binding.coordinator, it)
         })
     }
 
@@ -62,21 +60,9 @@ class HomeActivity : AppCompatActivity() {
         when (requestCode) {
             EDIT_PROFILE_REQUEST_CODE -> {
                 if (resultCode == Activity.RESULT_OK)
-                    showMessage(getString(R.string.msg_profile_updated))
+                    SnackbarUtil.showInfo(binding.coordinator, getString(R.string.msg_profile_updated))
             }
         }
-    }
-
-    private fun showMessage(message: String) {
-        Snackbar.make(binding.coordinator, message, Snackbar.LENGTH_LONG)
-            .withInfo()
-            .show()
-    }
-
-    private fun showErrorMessage(message: String) {
-        Snackbar.make(binding.coordinator, message, Snackbar.LENGTH_LONG)
-            .withError()
-            .show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
