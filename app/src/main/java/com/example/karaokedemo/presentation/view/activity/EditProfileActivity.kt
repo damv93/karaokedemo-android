@@ -38,10 +38,14 @@ class EditProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
-        supportActionBar?.setBackgroundDrawable(ContextCompat.getDrawable(this, android.R.color.transparent))
-        supportActionBar?.title = getString(R.string.lbl_edit_profile)
+
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_close)
+            setBackgroundDrawable(ContextCompat.getDrawable(this@EditProfileActivity, android.R.color.transparent))
+            title = getString(R.string.lbl_edit_profile)
+        }
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_profile)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
