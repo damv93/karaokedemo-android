@@ -10,7 +10,8 @@
     <string name="lbl_camera">Camera</string>
     <string name="lbl_gallery">Gallery</string>
     <string name="lbl_profile_picture">Profile picture</string>
-    <string name="msg_general_connection_error">There was a connection error. Try again please.</string>
+    <string name="msg_general_error">There was an error. Please try again.</string>
+    <string name="msg_general_connection_error">There was a connection error. Please try again.</string>
 
     <!-- Main Menu -->
     <string name="lbl_home">Home</string>

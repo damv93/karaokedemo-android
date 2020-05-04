@@ -31,9 +31,12 @@
         <Button
             android:id="@+id/btn_change_photo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/button_height_small"
             android:layout_marginTop="@dimen/space_small"
+            android:paddingStart="@dimen/space_small"
+            android:paddingEnd="@dimen/space_small"
             android:text="@string/lbl_change_photo"
+            style="@style/AppTheme.DarkButton.Small"
             app:layout_constraintTop_toBottomOf="@id/img_profile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -48,8 +51,11 @@
             app:layout_constraintTop_toBottomOf="@id/btn_change_photo">
 
             <EditText
+                android:id="@+id/edt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:nextFocusForward="@id/edt_username"
                 android:text="@={viewModel.name}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -64,8 +70,10 @@
             app:layout_constraintTop_toBottomOf="@id/til_name">
 
             <EditText
+                android:id="@+id/edt_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:text="@={viewModel.username}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -81,6 +89,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
                 android:text="@={viewModel.biography}" />
 
         </com.google.android.material.textfield.TextInputLayout>
