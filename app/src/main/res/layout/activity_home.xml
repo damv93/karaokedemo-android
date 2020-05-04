@@ -60,6 +60,7 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="vertical"
+                android:visibility="@{viewModel.videos.size > 0 ? View.VISIBLE : View.INVISIBLE}"
                 tools:listitem="@layout/item_video"/>
 
             <ProgressBar

@@ -21,9 +21,10 @@
             android:layout_width="@dimen/icon_size_xl"
             android:layout_height="@dimen/icon_size_xl"
             android:layout_marginTop="@dimen/space_medium"
-            app:srcCompat="@drawable/ic_person_with_background"
+            tools:srcCompat="@drawable/ic_person_with_background"
             app:imageUri="@{viewModel.profileImageUri}"
-            app:placeholder="@{@drawable/ic_person_with_background}"
+            app:placeholder="@{viewModel.profileImageUri != null ? @drawable/anim_loading : @drawable/ic_person_with_background}"
+            app:error="@{@drawable/ic_person_with_background}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

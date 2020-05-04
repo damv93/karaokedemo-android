@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.karaokedemo.R
 import com.example.karaokedemo.databinding.ItemVideoBinding
 import com.example.karaokedemo.presentation.model.Video
+import com.example.karaokedemo.presentation.view.util.HtmlUtil
 import com.squareup.picasso.Picasso
 
 class VideoPlayerAdapter(private val videos: List<Video>) : RecyclerView.Adapter<VideoPlayerViewHolder>(){
@@ -28,7 +29,8 @@ class VideoPlayerViewHolder private constructor(val binding: ItemVideoBinding)
     fun bind(video: Video) {
         itemView.tag = this
         binding.videoInfo = video
-        binding.userSang = itemView.context.getString(R.string.txt_user_sang, video.user.name, video.description)
+        binding.userSang = HtmlUtil.fromHtml(
+            itemView.context.getString(R.string.txt_user_sang, video.user.name, video.description))
         binding.executePendingBindings()
     }
 

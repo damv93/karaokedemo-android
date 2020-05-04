@@ -16,12 +16,12 @@ fun setImageUri(imageView: ImageView, uri: String?) {
         .into(imageView)
 }
 
-@BindingAdapter("imageUri", "placeholder")
-fun setImageUri(imageView: ImageView, uri: String?, placeholder: Drawable) {
+@BindingAdapter("imageUri", "placeholder", "error")
+fun setImageUri(imageView: ImageView, uri: String?, placeholder: Drawable, error: Drawable) {
     Picasso.get()
         .load(uri)
         .placeholder(placeholder)
         .transform(CropCircleTransformation())
-        .error(R.drawable.ic_broken_image)
+        .error(error)
         .into(imageView)
 }

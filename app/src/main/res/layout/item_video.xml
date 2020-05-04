@@ -9,7 +9,7 @@
             type="com.example.karaokedemo.presentation.model.Video" />
         <variable
             name="userSang"
-            type="String" />
+            type="android.text.Spanned" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,31 +26,35 @@
             android:layout_height="@dimen/icon_size_large"
             android:layout_marginTop="@dimen/space_medium"
             android:layout_marginStart="@dimen/space_medium"
-            app:srcCompat="@drawable/ic_person"
+            app:srcCompat="@drawable/ic_person_with_background"
             app:imageUri="@{videoInfo.user.imageUri}"
+            app:placeholder="@{videoInfo.user.imageUri != null ? @drawable/anim_loading : @drawable/ic_person_with_background}"
+            app:error="@{@drawable/ic_person_with_background}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/txt_user_sang"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_medium"
+            android:layout_marginEnd="@dimen/space_small"
             app:layout_constraintStart_toEndOf="@id/img_profile"
+            app:layout_constraintEnd_toStartOf="@id/img_menu"
             app:layout_constraintTop_toTopOf="@+id/img_profile"
             app:layout_constraintBottom_toBottomOf="@+id/img_profile"
             android:text="@{userSang}"
             tools:text="Username sang Secreto" />
 
-        <!--VideoView
-            android:id="@+id/video"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/video_height"
-            tools:layout_height="@dimen/video_height"
-            android:layout_marginTop="@dimen/space_small"
-            app:layout_constraintTop_toBottomOf="@id/img_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" /-->
+        <ImageView
+            android:id="@+id/img_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_small"
+            app:srcCompat="@drawable/ic_more_vert"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/video"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <FrameLayout
             android:id="@+id/video"
@@ -67,25 +71,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                imageUri="@{videoInfo.previewImageUrl}"/>
+                app:imageUri="@{videoInfo.previewImageUrl}"/>
 
             <ImageView
                 android:id="@+id/volume_control"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="@dimen/icon_size_medium"
+                android:layout_height="@dimen/icon_size_medium"
                 android:layout_gravity="end|bottom"
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="15dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_volume_on"
-                android:tint="@android:color/white"
+                app:srcCompat="@drawable/ic_volume_on"
                 android:alpha="0"
                 android:animateLayoutChanges="true" />
 
+            <ImageView
+                android:id="@+id/img_play"
+                android:layout_width="@dimen/icon_size_large"
+                android:layout_height="@dimen/icon_size_large"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_play_circle_outline"/>
+
             <ProgressBar
                 android:id="@+id/progress_bar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/icon_size_large"
+                android:layout_height="@dimen/icon_size_large"
                 android:layout_gravity="center"
                 style="?android:attr/progressBarStyle"
                 android:visibility="gone" />
@@ -101,46 +111,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/video" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/space_small"
-            android:layout_marginTop="@dimen/space_small"
-            app:srcCompat="@drawable/ic_more_vert"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/video" />
-
-        <!--ImageView
-            android:id="@+id/img_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/space_small"
-            android:layout_marginTop="@dimen/space_small"
-            app:srcCompat="@drawable/ic_play_circle_outline"
-            app:layout_constraintStart_toStartOf="@id/img_preview"
-            app:layout_constraintEnd_toEndOf="@id/img_preview"
-            app:layout_constraintTop_toTopOf="@id/img_preview"
-            app:layout_constraintBottom_toBottomOf="@id/img_preview"/-->
-
         <TextView
             android:id="@+id/txt_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_medium"
             android:layout_marginBottom="@dimen/space_medium"
+            android:textStyle="bold"
             android:text="@{videoInfo.description}"
             tools:text="Secreto - Anuel AA, Karol G"
             app:layout_constraintStart_toStartOf="@id/video"
             app:layout_constraintBottom_toBottomOf="@id/video" />
 
-        <!--TextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/space_medium"
-            android:layout_marginBottom="@dimen/space_medium"
             android:text="@string/txt_zero_reproductions"
             app:layout_constraintEnd_toEndOf="@id/video"
-            app:layout_constraintBottom_toBottomOf="@id/video" /-->
+            app:layout_constraintTop_toBottomOf="@id/video"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <ImageView
             android:id="@+id/img_like"

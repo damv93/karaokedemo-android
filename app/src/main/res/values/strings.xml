@@ -32,7 +32,7 @@
     <string name="txt_username">\@%s</string>
 
     <!-- Item Video -->
-    <string name="txt_user_sang">%s sang %s</string>
+    <string name="txt_user_sang"><![CDATA[<b>%s</b> sang <b>%s</b>]]></string>
     <string name="txt_zero_reproductions">0 reproductions</string>
 
     <!-- Edit Profile -->

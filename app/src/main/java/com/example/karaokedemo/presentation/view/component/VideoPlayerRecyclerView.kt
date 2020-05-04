@@ -29,8 +29,6 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
-import com.squareup.picasso.Picasso
-import java.util.*
 
 class VideoPlayerRecyclerView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -42,6 +40,7 @@ class VideoPlayerRecyclerView @JvmOverloads constructor(
 
     // ui
     private var thumbnail: ImageView? = null
+    private var playIcon: ImageView? = null
     private var volumeControl: ImageView? = null
     private var progressBar: ProgressBar? = null
     private var viewHolderParent: View? = null
@@ -87,6 +86,7 @@ class VideoPlayerRecyclerView @JvmOverloads constructor(
                 if (newState == SCROLL_STATE_IDLE) {
                     Log.d(TAG, "onScrollStateChanged: called.")
                     thumbnail?.visibility = View.VISIBLE // show the old thumbnail
+                    playIcon?.visibility = View.VISIBLE
 
                     // There's a special case when the end of the list has been reached.
                     // Need to handle that with this bit of logic
@@ -127,6 +127,7 @@ class VideoPlayerRecyclerView @JvmOverloads constructor(
                     Player.STATE_READY -> {
                         Log.e(TAG, "onPlayerStateChanged: Ready to play.")
                         progressBar?.visibility = View.GONE
+                        playIcon?.visibility = View.GONE
                         if (!isVideoViewAdded) {
                             addVideoView()
                         }
@@ -202,6 +203,7 @@ class VideoPlayerRecyclerView @JvmOverloads constructor(
         }
 
         thumbnail = holder.binding.thumbnail
+        playIcon = holder.binding.imgPlay
         progressBar = holder.binding.progressBar
         volumeControl = holder.binding.volumeControl
         viewHolderParent = holder.itemView
@@ -209,7 +211,7 @@ class VideoPlayerRecyclerView @JvmOverloads constructor(
 
         videoSurfaceView?.player = videoPlayer
 
-        viewHolderParent?.setOnClickListener(videoViewClickListener)
+        frameLayout?.setOnClickListener(videoViewClickListener)
 
         val dataSourceFactory: DataSource.Factory =
             DefaultDataSourceFactory(
@@ -273,6 +275,7 @@ class VideoPlayerRecyclerView @JvmOverloads constructor(
             playPosition = -1
             videoSurfaceView?.visibility = View.INVISIBLE
             thumbnail?.visibility = View.VISIBLE
+            playIcon?.visibility = View.VISIBLE
         }
     }
 
@@ -306,20 +309,16 @@ class VideoPlayerRecyclerView @JvmOverloads constructor(
     }
 
     private fun animateVolumeControl() {
-        if (volumeControl != null) {
-            volumeControl?.bringToFront()
+        volumeControl?.let {
+            it.bringToFront()
             if (volumeState == VolumeState.OFF) {
-                Picasso.get()
-                    .load(R.drawable.ic_volume_off)
-                    .into(volumeControl)
+                it.setBackgroundResource(R.drawable.ic_volume_off)
             } else if (volumeState == VolumeState.ON) {
-                Picasso.get()
-                    .load(R.drawable.ic_volume_on)
-                    .into(volumeControl)
+                it.setBackgroundResource(R.drawable.ic_volume_on)
             }
-            volumeControl?.animate()?.cancel()
-            volumeControl?.alpha = 1f
-            volumeControl?.animate()
+            it.animate()?.cancel()
+            it.alpha = 1f
+            it.animate()
                 ?.alpha(0f)
                 ?.setDuration(600)
                 ?.startDelay = 1000
