@@ -25,7 +25,8 @@
                 android:id="@+id/app_bar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/app_bar_height"
-                android:theme="@style/AppTheme.AppBarOverlay">
+                android:theme="@style/AppTheme.AppBarOverlay"
+                android:background="@drawable/background_profile_header">
 
                 <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:id="@+id/toolbar_layout"
@@ -69,6 +70,7 @@
                 android:layout_gravity="bottom|center_horizontal"
                 app:layout_anchor="@id/rv_videos"
                 app:layout_anchorGravity="center_horizontal"
+                android:paddingTop="@dimen/space_medium"
                 android:visibility="@{viewModel.isLoadingVideos ? View.VISIBLE : View.GONE}"/>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
