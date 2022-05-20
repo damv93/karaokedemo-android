@@ -12,7 +12,7 @@ interface Api {
     fun getVideos(): Deferred<List<VideoDto>>
 
     companion object {
-        private const val BASE_URL = "http://www.mocky.io/v2/"
+        private const val BASE_URL = "https://www.mocky.io/v2/"
         fun create(): Api =
             Retrofit.Builder()
                 .baseUrl(BASE_URL)
