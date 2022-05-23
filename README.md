@@ -9,7 +9,7 @@ https://user-images.githubusercontent.com/14865130/169726917-4978997b-f949-49fa-
 
 
 ### VideoPlayerRecyclerView
-RecyclerView used in the feed to autoplay videos as the user scrolls. It uses ExpoPlayer.
+RecyclerView used in the feed to autoplay videos as the user scrolls. It uses **ExpoPlayer**.
 The source code was taken from [this repo](https://github.com/mitchtabian/Video-Player-RecyclerView), migrating it to kotlin.
 
 ### The application uses the following:
