@@ -1,6 +1,6 @@
 # Karaoke demo - Android
 
-Android app showcasing a social network with a feed where users can see videos of other users singing.
+Android app showcasing a social media feed where users can see videos of other users singing.
 
 
 
